@@ -2,6 +2,7 @@
 using System.Threading;
 using System.IO;
 using static MahmoudIbrahim_sun_wed_5pm_C__Linq_02.ListGenerator;
+using System.Collections.Generic;
 namespace MahmoudIbrahim_sun_wed_5pm_C__Linq_02
 {
     internal class Program
@@ -111,13 +112,116 @@ namespace MahmoudIbrahim_sun_wed_5pm_C__Linq_02
             //}
 
             // 9.
-            
+
             //var TotalUnitsInStock = ProductList.GroupBy(product => product.Category).Select(group => new { CategoryName = group.Key, TotalUnitsInStock = group.Sum(product => product.UnitsInStock) }).ToList();
 
             //foreach (var category in TotalUnitsInStock)
             //{
             //    Console.WriteLine($"Category: {category.CategoryName}, Total Units in Stock: {category.TotalUnitsInStock}");
             //}
+            #endregion
+
+            #region LINQ - Set Operators
+            // 1.
+            //var productList = ProductList.Select(product => product.ProductName).Distinct().ToList();
+
+            //foreach (var product in productList)
+            //{
+            //    Console.WriteLine(product);
+            //}
+
+            // 2.
+            //var result = ProductList.Select(product => product.ProductName[0])
+            //            .Union(CustomerList.Select(customer => customer.CustomerName[0]))
+            //            .ToList();
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            // 3.
+            //var productFirstLetters = ProductList.Select(product => product.ProductName[0]);
+            //var customerFirstLetters = CustomerList.Select(customer => customer.CustomerName[0]);
+
+            //var commonFirstLetters = productFirstLetters.Intersect(customerFirstLetters).ToList();
+
+            //Console.WriteLine("Common first letters in both product and customer names:");
+            //foreach (var letter in commonFirstLetters)
+            //{
+            //    Console.WriteLine(letter);
+            //}
+
+            // 4.
+            //first letter in products and not first letter in customer names
+            //var FirstLetterProducts = ProductList.Select(product => product.ProductName[0]);
+            //var FirstLetterCustomers = CustomerList.Select(customer => customer.CustomerName[0]);
+
+            //var result = FirstLetterProducts.Except(FirstLetterCustomers).ToList();
+            //Console.WriteLine("First letter in products and not first letter in customer names:");
+            //foreach (var letter in result)
+            //{
+            //    Console.WriteLine(letter);
+            //}
+
+            // 5.
+            //var Last3CharsCustomers = CustomerList.Select(customer => customer.CustomerName.Substring(customer.CustomerName.Length - 3));
+            //var Last3CharsProducts = ProductList.Select(product => product.ProductName.Substring(product.ProductName.Length - 3));
+            //Console.WriteLine("Last 3 characters in customer names and product names:");
+            //foreach (var item in Last3CharsCustomers.Concat(Last3CharsProducts))
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            // LINQ - Quantifiers
+            // 1.
+            //string filePath = "dictionary_english.txt";
+
+            //try
+            //{
+            //    using (StreamReader reader = new StreamReader(filePath))
+            //    {
+            //        string line;
+            //        int wordCount = 0;
+
+            //        while ((line = reader.ReadLine()) != null)
+            //        {
+            //            if(line.Contains("ei"))
+            //            {
+            //                Console.WriteLine(line);
+            //            }
+            //        }
+            //    }
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine($"An error occurred: {e.Message}");
+            //}
+            // 2.
+            //var productsByCategory = ProductList.Where(product => product.UnitsInStock == 1).GroupBy(product => product.Category).ToList();
+
+            //foreach (var category in productsByCategory)
+            //{
+            //    Console.WriteLine($"Category: {category.Key}");
+            //    foreach (var product in category)
+            //    {
+            //        Console.WriteLine($"Product: {product.ProductName}");
+            //    }
+            //}
+            #endregion
+
+            #region LINQ - Grouping Operators
+            List<int> numbers = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+            var PartitionByReminderBy5 = numbers.GroupBy(number => number % 5);
+
+            foreach (var group in PartitionByReminderBy5)
+            {
+                Console.WriteLine($"Group: {group.Key}");
+                foreach (var number in group)
+                {
+                    Console.WriteLine($"Number: {number}");
+                }
+            }
             #endregion
         }
     }
