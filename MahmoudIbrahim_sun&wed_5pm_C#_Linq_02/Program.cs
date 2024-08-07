@@ -208,6 +208,9 @@ namespace MahmoudIbrahim_sun_wed_5pm_C__Linq_02
             //        Console.WriteLine($"Product: {product.ProductName}");
             //    }
             //}
+
+            // 3.
+            // var productsByCategory = ProductList.Where(product => product.UnitsInStock >= 1).GroupBy(product => product.Category).ToList();
             #endregion
 
             #region LINQ - Grouping Operators
